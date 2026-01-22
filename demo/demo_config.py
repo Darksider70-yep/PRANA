@@ -1,0 +1,5 @@
+# Feature flags for rounds
+
+ENABLE_VISION = True
+ENABLE_TIME_DECAY = False
+ENABLE_RELIEF_RECOMMENDATION = False
