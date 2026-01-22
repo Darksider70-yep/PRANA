@@ -1,4 +1,4 @@
-from demo.mock_data import ZONES
+from demo.generic_city_data import ZONES
 from core.scoring_engine import calculate_priority
 from core.explainability import explain_zone
 from core.time_decay import time_urgency

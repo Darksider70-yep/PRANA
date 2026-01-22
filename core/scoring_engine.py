@@ -11,16 +11,17 @@ def calculate_vulnerability(zone):
 def calculate_access_risk(zone):
     return min(zone["hospital_distance_km"] / 20.0, 1.0)
 
-
-def calculate_priority(zone, time_urgency=0.5):
+def calculate_priority(zone, time_urgency, profile):
     vulnerability = calculate_vulnerability(zone)
     access_risk = calculate_access_risk(zone)
 
+    w = profile["weights"]
+
     priority_score = (
-    0.35 * zone["damage_score"] +
-    0.25 * vulnerability +
-    0.2 * access_risk +
-    0.2 * time_urgency
-)
+        w["damage"] * zone["damage_score"] +
+        w["vulnerability"] * vulnerability +
+        w["access"] * access_risk +
+        w["time"] * time_urgency
+    )
 
     return round(priority_score, 3)
